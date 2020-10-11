@@ -37,6 +37,10 @@ void event(const char * payload, size_t length) {
   USE_SERIAL.printf("got message: %s\n", payload);
 }
 
+void update(const char * payload, size_t length) {
+  USE_SERIAL.printf("updated: %s\n", payload);
+}
+
 void setup() {
     USE_SERIAL.begin(115200);
 
@@ -58,6 +62,7 @@ void setup() {
         delay(100);
     }
     webSocket.on("event", event);
+    webSocket.on("update", update);
     webSocket.begin(SOCKET_IP, SOCKET_PORT);
     prevtime = millis();
 
@@ -115,7 +120,4 @@ void loop() {
      
     }
 
-    
-    
-    
 }
