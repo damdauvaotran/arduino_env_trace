@@ -18,9 +18,9 @@
 
 
 
-const char* SSID = "một triệu ăn gì";
-const char* PASSWORD = "lkjhgfdsa";
-const char* SOCKET_IP = "192.168.43.162";
+const char* SSID = "tengicungduoc";
+const char* PASSWORD = "462667652253";
+const char* SOCKET_IP = "192.168.1.101";
 const int SOCKET_PORT = 8000;
 const int DELAY_TIME = 500;
 const int DHTPIN  = 4;
@@ -69,6 +69,16 @@ void setup() {
 
   // Initial sensor
   mlx.begin();
+  Serial.print("Reading");
+  float objectTemp = mlx.readObjectTempC();
+  float ambientTemp = mlx.readAmbientTempC();
+  Serial.print("Ambient = "); Serial.print(ambientTemp);
+  Serial.print("*C\tObject = "); Serial.print(objectTemp); Serial.println("*C");
+  Serial.println();
+  char buff[128];
+  sprintf(buff, "{\"objectTemp\":%f,\"ambientTemp\":%f}", objectTemp, ambientTemp);
+  webSocket.emit("message", buff);
+  Serial.print("Result sent");
 }
 
 void loop() {
@@ -78,15 +88,5 @@ void loop() {
     prevtime = millis();
 
     // Print sensor info
-
-    float objectTemp = mlx.readObjectTempC();
-    float ambientTemp = mlx.readAmbientTempC();
-    Serial.print("Ambient = "); Serial.print(ambientTemp);
-    Serial.print("*C\tObject = "); Serial.print(objectTemp); Serial.println("*C");
-    Serial.println();
-    char buff[128];
-    sprintf(buff, "{\"objectTemp\":%f,\"ambientTemp\":%f}", objectTemp, ambientTemp);
-    webSocket.emit("message", buff);
-
   }
 }
