@@ -18,9 +18,9 @@
 
 
 
-const char* SSID = "một triệu ăn gì";
-const char* PASSWORD = "lkjhgfdsa";
-const char* SOCKET_IP = "192.168.43.162";
+const char* SSID = "tengicungduoc";
+const char* PASSWORD = "462667652253";
+const char* SOCKET_IP = "192.168.1.101";
 const int SOCKET_PORT = 8000;
 const int DELAY_TIME = 500;
 const int DHTPIN  = 4;
