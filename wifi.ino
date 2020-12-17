@@ -18,12 +18,11 @@
 
 
 
-const char* SSID = "tengicungduoc";
-const char* PASSWORD = "462667652253";
-const char* SOCKET_IP = "192.168.1.101";
+const char* SSID = "gg yasou";
+const char* PASSWORD = "asdfghjkl";
+const char* SOCKET_IP = "192.168.43.162";
 const int SOCKET_PORT = 8000;
-const int DELAY_TIME = 500;
-const int DHTPIN  = 4;
+const int DELAY_TIME = 1000;
 
 
 ESP8266WiFiMulti WiFiMulti;
